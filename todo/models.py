@@ -10,4 +10,4 @@ class Task(models.Model):
 
 
 class Tag(models.Model):
-    theme = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)

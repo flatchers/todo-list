@@ -52,8 +52,13 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todo:tag-list")
 
 
-def task_status_update(request: HttpRequest, task_id: int):
-    current_task = Task.objects.get(pk=task_id)
-    current_task.is_done = not current_task.is_done
-    current_task.save()
-    return HttpResponseRedirect(reverse("todo:task-list"))
+class TaskStatusUpdate(Task, generic.View):
+    @staticmethod
+    def post(request: HttpRequest, task_id: int) -> HttpResponseRedirect:
+        tasks = Task.objects.get(pk=task_id)
+        TaskStatusUpdate.toggle_status(tasks)
+        return redirect("todo:task-list")
+
+    def toggle_status(self):
+        self.is_done = not self.is_done
+        self.save()

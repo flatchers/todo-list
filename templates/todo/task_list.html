@@ -22,15 +22,12 @@
                                 Not done
                             </strong>
                         {% endif %}
-                        <a href="{% url 'todo:toggle-task-status' task_id=task.id %}">
-                        <button class="btn {% if task.is_done %}btn-success{% else %}btn-secondary{% endif %} link-to-page rounded">
-                          {% if task.is_done %}
-                            Complete
-                          {% else %}
-                            Undo
-                          {% endif %}
-                        </button>
-                        </a>
+                        <form action="{% url 'todo:toggle-task-status' task_id=task.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit"
+                               value="{% if task.is_done %}Complete{% else %}Undo{% endif %}"
+                               class="btn {% if task.is_done %}btn-success{% else %}btn-secondary{% endif %} link-to-page rounded">
+                        </form>
                 </p>
                     <p>created: {{ task.created }} {% if task.deadline %} {{ task.deadline }} {% endif %}</p>
                     <strong class="text-secondary">Tags:

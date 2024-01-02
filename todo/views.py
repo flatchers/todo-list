@@ -1,9 +1,7 @@
-from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy, reverse
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views import generic
-from django.views.decorators.csrf import csrf_protect
 
 from .forms import TaskForm
 from .models import Task, Tag

@@ -7,8 +7,8 @@ Python must be already installed
 
 <pre>
   <code>
-    git clone https://github.com/flatchers/restaurant-kitchen-service.git
-    cd restaurant-kitchen-service
+    git clone https://github.com/flatchers/todo-list.git
+    cd todo-list
     python -m venv venv
     venv\Scripts\activate
     pip install -r requirements.txt
